@@ -31,6 +31,14 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          '**/*.test.ts',
+        ],
+      },
+    ],
   },
   overrides: [
     {
