@@ -10,7 +10,17 @@ let myApp: MyAppClient;
 
 describe('MyApp', () => {
   beforeAll(async () => {
-    const sender = await algokit.getLocalNetDispenserAccount(algodClient, kmdClient);
+    const sender = algosdk.generateAccount();
+
+    await algokit.ensureFunded(
+      {
+        accountToFund: sender,
+        minSpendingBalance: algokit.algos(1),
+      },
+      algodClient,
+      kmdClient,
+    );
+
     myApp = new MyAppClient(
       {
         sender: { signer: algosdk.makeBasicAccountTransactionSigner(sender), addr: sender.addr },
