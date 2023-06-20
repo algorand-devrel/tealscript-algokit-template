@@ -29,9 +29,7 @@ describe('MyApp', () => {
       },
       algodClient,
     );
-  });
 
-  test('create', async () => {
     await myApp.appClient.create();
   });
 
