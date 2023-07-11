@@ -1,4 +1,4 @@
-{%- set camel_case_name = (project_name | regex_replace('(-|\s+|_)', ' ')).split(' ') | map('capitalize') | join('') %}
+{%- set camel_case_name = (project_name | regex_replace('(-|\s+|_)', ' ')).split(' ') | map('capitalize') | join('') -%}
 import {
   describe, test, expect, beforeAll,
 } from '@jest/globals';
