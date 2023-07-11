@@ -9,7 +9,7 @@ import { {{ camel_case_name }}Client } from '../contracts/clients/{{ camel_case_
 
 const fixture = algorandFixture();
 
-let myApp: {{ camel_case_name }}Client;
+let appClient: {{ camel_case_name }}Client;
 
 describe('{{ camel_case_name }}', () => {
   beforeEach(fixture.beforeEach);
@@ -19,7 +19,7 @@ describe('{{ camel_case_name }}', () => {
     const { algod, testAccount } = fixture.context;
     const sender = algosdk.generateAccount();
 
-    myApp = new {{ camel_case_name }}Client(
+    appClient = new {{ camel_case_name }}Client(
       {
         sender: testAccount,
         resolveBy: 'id',
@@ -28,20 +28,20 @@ describe('{{ camel_case_name }}', () => {
       algod,
     );
 
-    await myApp.create.bare();
+    await appClient.create.bare();
   });
 
   test('sum', async () => {
     const a = 13;
     const b = 37;
-    const sum = await myApp.doMath({ a, b, operation: 'sum' });
+    const sum = await appClient.doMath({ a, b, operation: 'sum' });
     expect(sum.return?.valueOf()).toBe(BigInt(a + b));
   });
 
   test('difference', async () => {
     const a = 13;
     const b = 37;
-    const diff = await myApp.doMath({ a, b, operation: 'difference' });
+    const diff = await appClient.doMath({ a, b, operation: 'difference' });
     expect(diff.return?.valueOf()).toBe(BigInt(a >= b ? a - b : b - a));
   });
 });
