@@ -1,16 +1,22 @@
 {%- set camel_case_name = (project_name | regex_replace('(-|\s+|_)', ' ')).split(' ') | map('capitalize') | join('') -%}
 import {
-  describe, test, expect, beforeAll,
+  describe, test, expect, beforeAll, beforeEach
 } from '@jest/globals';
 import * as algokit from '@algorandfoundation/algokit-utils';
 import algosdk from 'algosdk';
-import { algodClient, kmdClient } from './common';
+import { algorandFixture } from '@algorandfoundation/algokit-utils/testing';
 import { {{ camel_case_name }}Client } from '../contracts/clients/{{ camel_case_name }}Client';
+
+const fixture = algorandFixture();
 
 let myApp: {{ camel_case_name }}Client;
 
 describe('{{ camel_case_name }}', () => {
+  beforeEach(fixture.beforeEach);
+
   beforeAll(async () => {
+    await fixture.beforeEach();
+    const { algod, kmd } = fixture.context;
     const sender = algosdk.generateAccount();
 
     await algokit.ensureFunded(
@@ -18,8 +24,8 @@ describe('{{ camel_case_name }}', () => {
         accountToFund: sender,
         minSpendingBalance: algokit.algos(1),
       },
-      algodClient,
-      kmdClient,
+      algod,
+      kmd,
     );
 
     myApp = new {{ camel_case_name }}Client(
@@ -28,10 +34,10 @@ describe('{{ camel_case_name }}', () => {
         resolveBy: 'id',
         id: 0,
       },
-      algodClient,
+      algod,
     );
 
-    await myApp.appClient.create();
+    await myApp.create.bare();
   });
 
   test('sum', async () => {
