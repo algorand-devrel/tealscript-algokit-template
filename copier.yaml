@@ -7,16 +7,6 @@ project_name:
     help: Name for this project.
     placeholder: "algorand-app"
 
-author_name:
-    type: str
-    help: Package author name
-    placeholder: "Your Name"
-
-author_email:
-    type: str
-    help: Package author email
-    placeholder: "your@email.tld"
-
 # The following should never get prompted; algokit should always pass these values through by convention
 
 algod_token:
