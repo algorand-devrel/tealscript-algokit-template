@@ -1,14 +1,16 @@
+{% set camel_case_name = (project_name | regex_replace('(-|\s+|_)', ' ')).split(' ') | map('capitalize') | join('') %}
+
 import {
   describe, test, expect, beforeAll,
 } from '@jest/globals';
 import * as algokit from '@algorandfoundation/algokit-utils';
 import algosdk from 'algosdk';
 import { algodClient, kmdClient } from './common';
-import { MyAppClient } from '../contracts/clients/MyApp';
+import { {{ camel_case_name }}Client } from '../contracts/clients/{{ camel_case_name }}';
 
-let myApp: MyAppClient;
+let myApp: {{ camel_case_name }}Client;
 
-describe('MyApp', () => {
+describe('{{ camel_case_name }}', () => {
   beforeAll(async () => {
     const sender = algosdk.generateAccount();
 
@@ -21,7 +23,7 @@ describe('MyApp', () => {
       kmdClient,
     );
 
-    myApp = new MyAppClient(
+    myApp = new {{ camel_case_name }}Client(
       {
         sender: { signer: algosdk.makeBasicAccountTransactionSigner(sender), addr: sender.addr },
         resolveBy: 'id',

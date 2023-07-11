@@ -1,9 +1,10 @@
+{% set camel_case_name = (project_name | regex_replace('(-|\s+|_)', ' ')).split(' ') | map('capitalize') | join('') %}
 {
-  "name": "tealscript-project",
+  "name": "{{ project_name }}",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "generate-client": "algokitgen generate -a contracts/artifacts/MyApp.json -o contracts/clients/MyApp.ts",
+    "generate-client": "algokitgen generate -a contracts/artifacts/{{ camel_case_name }}.json -o contracts/clients/{{ camel_case_name }}.ts",
     "compile-contract": "tealscript contracts/my_app.algo.ts contracts/artifacts",
     "build": "npm run compile-contract && npm run generate-client",
     "test": "jest",

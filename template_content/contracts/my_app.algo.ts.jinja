@@ -1,7 +1,9 @@
+{% set camel_case_name = (project_name | regex_replace('(-|\s+|_)', ' ')).split(' ') | map('capitalize') | join('') %}
+
 import { Contract } from '@algorandfoundation/tealscript';
 
 // eslint-disable-next-line no-unused-vars
-class MyApp extends Contract {
+class {{ camel_case_name }} extends Contract {
   private getSum(a: number, b: number): number {
     return a + b;
   }
