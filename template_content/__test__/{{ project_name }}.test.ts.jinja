@@ -16,21 +16,12 @@ describe('{{ camel_case_name }}', () => {
 
   beforeAll(async () => {
     await fixture.beforeEach();
-    const { algod, kmd } = fixture.context;
+    const { algod, testAccount } = fixture.context;
     const sender = algosdk.generateAccount();
-
-    await algokit.ensureFunded(
-      {
-        accountToFund: sender,
-        minSpendingBalance: algokit.algos(1),
-      },
-      algod,
-      kmd,
-    );
 
     myApp = new {{ camel_case_name }}Client(
       {
-        sender: { signer: algosdk.makeBasicAccountTransactionSigner(sender), addr: sender.addr },
+        sender: testAccount,
         resolveBy: 'id',
         id: 0,
       },
