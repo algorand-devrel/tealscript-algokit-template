@@ -44,6 +44,7 @@ module.exports = {
     {
       files: ['*.algo.ts'],
       rules: {
+        'import/no-extraneous-dependencies': 'off',
         'object-shorthand': 'off',
         'class-methods-use-this': 'off',
         'no-undef': 'off',
