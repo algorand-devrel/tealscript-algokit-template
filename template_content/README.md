@@ -1,5 +1,9 @@
 # TEALScript Project
 
+## Documentation
+
+For TEALScript documentation, go to https://tealscript.algo.xyz
+
 ## Usage
 
 ### Build Contract
