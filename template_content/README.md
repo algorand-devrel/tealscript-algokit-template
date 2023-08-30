@@ -18,7 +18,7 @@ This template assumes you have a local network running on your machine. The easi
 
 ### Run Tests
 
-`npm run test` will execute the tests defined in (./__test__)[./__test__] 
+`npm run test` will execute the tests defined in [./\_\_test\_\_](./__test__) 
 
 ### Lint
 
