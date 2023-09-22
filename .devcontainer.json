@@ -1,4 +1,5 @@
 {
     "postCreateCommand": "pipx install algokit && algokit init  -n TEALScriptApp --defaults --bootstrap --no-ide --git --template-url https://github.com/algorand-devrel/tealscript-algokit-template --UNSAFE-SECURITY-accept-template-url",
-    "postStartCommand": "code TEALScriptApp"
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace",
+    "workspaceFolder": "/workspace/TEALScriptApp"
 }
