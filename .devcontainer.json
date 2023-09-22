@@ -1,3 +1,4 @@
 {
-    "postCreateCommand": "pipx install algokit && algokit init  -n TEALScriptApp --defaults --bootstrap --ide --git --template-url https://github.com/algorand-devrel/tealscript-algokit-template --UNSAFE-SECURITY-accept-template-url"
+    "postCreateCommand": "pipx install algokit && algokit init  -n TEALScriptApp --defaults --bootstrap --no-ide --git --template-url https://github.com/algorand-devrel/tealscript-algokit-template --UNSAFE-SECURITY-accept-template-url",
+    "postStartCommand": "code TEALScriptApp"
 }
