@@ -6,6 +6,7 @@
   "scripts": {
     "generate-client": "algokitgen generate -a contracts/artifacts/{{ camel_case_name }}.json -o contracts/clients/{{ camel_case_name }}Client.ts",
     "compile-contract": "tealscript contracts/{{ project_name }}.algo.ts contracts/artifacts",
+    "generate-components": "algokit-generate-component contracts/artifacts/{{ camel_case_name }}.json contracts/artifacts/components",
     "build": "npm run compile-contract && npm run generate-client",
     "test": "npm run build && jest",
     "lint": "eslint . --ext .ts",
