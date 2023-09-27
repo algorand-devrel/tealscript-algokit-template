@@ -28,7 +28,7 @@ describe('{{ camel_case_name }}', () => {
       algod,
     );
 
-    await appClient.create.bare();
+    await appClient.create.createApplication({});
   });
 
   test('sum', async () => {
