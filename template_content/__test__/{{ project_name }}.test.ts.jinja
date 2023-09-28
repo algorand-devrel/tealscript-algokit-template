@@ -18,6 +18,10 @@ describe('{{ camel_case_name }}', () => {
     await fixture.beforeEach();
     const { algod, testAccount } = fixture.context;
     const sender = algosdk.generateAccount();
+    await algokit.ensureFunded({
+      accountToFund: sender.address,
+      minSpendingBalance: algokit.algos(10),
+    })
 
     appClient = new {{ camel_case_name }}Client(
       {
