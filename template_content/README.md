@@ -8,7 +8,7 @@ For TEALScript documentation, go to https://tealscript.algo.xyz
 
 ### Algokit
 
-This template assumes you have a local network running on your machine. The easiet way to setup a local network is with [algokit](https://github.com/algorandfoundation/algokit-cli) if you don't have Algokit or its dependencies installed locally you can open this repository in Gitpod via https://gitpod.io/new and pasting in your repository's URL.
+This template assumes you have a local network running on your machine. The easiet way to setup a local network is with [algokit](https://github.com/algorandfoundation/algokit-cli). If you don't have Algokit or its dependencies installed locally you can open this repository in a GitHub codespace via https://codespaces.new and choosing this repo.
 
 ### Build Contract
 
