@@ -1,9 +1,5 @@
 {%- set camel_case_name = (project_name | regex_replace('(-|\s+|_)', ' ')).split(' ') | map('capitalize') | join('') -%}
-import {
-  describe, test, expect, beforeAll, beforeEach
-} from '@jest/globals';
-import * as algokit from '@algorandfoundation/algokit-utils';
-import algosdk from 'algosdk';
+import { describe, test, expect, beforeAll, beforeEach } from '@jest/globals';
 import { algorandFixture } from '@algorandfoundation/algokit-utils/testing';
 import { {{ camel_case_name }}Client } from '../contracts/clients/{{ camel_case_name }}Client';
 
@@ -17,7 +13,6 @@ describe('{{ camel_case_name }}', () => {
   beforeAll(async () => {
     await fixture.beforeEach();
     const { algod, testAccount } = fixture.context;
-    const sender = algosdk.generateAccount();
 
     appClient = new {{ camel_case_name }}Client(
       {
@@ -25,7 +20,7 @@ describe('{{ camel_case_name }}', () => {
         resolveBy: 'id',
         id: 0,
       },
-      algod,
+      algod
     );
 
     await appClient.create.createApplication({});
