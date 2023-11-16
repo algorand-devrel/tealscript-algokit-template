@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "generate-client": "algokitgen generate -a contracts/artifacts/{{ camel_case_name }}.json -o contracts/clients/{{ camel_case_name }}Client.ts",
+    "generate-client": "algokitgen generate -a contracts/artifacts/{{ camel_case_name }}.arc32.json -o contracts/clients/{{ camel_case_name }}Client.ts",
     "compile-contract": "tealscript contracts/{{ project_name }}.algo.ts contracts/artifacts",
-    "generate-components": "algokit-generate-component contracts/artifacts/{{ camel_case_name }}.json contracts/artifacts/components",
+    "generate-components": "algokit-generate-component contracts/artifacts/{{ camel_case_name }}.arc32.json contracts/artifacts/components",
     "build": "npm run compile-contract && npm run generate-client",
     "test": "npm run build && jest",
     "lint": "eslint . --ext .ts",
@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@algorandfoundation/algokit-client-generator": "^2.2.1",
-    "@algorandfoundation/tealscript": "^0.59.0",
+    "@algorandfoundation/tealscript": "^0.62.2",
     "@jest/globals": "^29.5.0",
     "@joe-p/algokit-generate-component": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
