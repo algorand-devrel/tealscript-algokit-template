@@ -11,6 +11,6 @@
           "label": "indexer"
         }
     },
-    "postCreateCommand": "pipx install git+https://github.com/joe-p/algokit-cli@codespaces",
+    "postCreateCommand": "pipx install algokit-cli",
     "postStartCommand": "algokit localnet start"
 }
