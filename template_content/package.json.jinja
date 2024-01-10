@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "generate-client": "algokitgen generate -a contracts/artifacts/{{ camel_case_name }}.arc32.json -o contracts/clients/{{ camel_case_name }}Client.ts",
-    "compile-contract": "tealscript contracts/{{ project_name }}.algo.ts contracts/artifacts",
+    "generate-client": "algokit generate client contracts/artifacts/ --language typescript  --output contracts/clients/{contract_name}Client.ts",
+    "compile-contract": "tealscript contracts/*.algo.ts contracts/artifacts",
     "generate-components": "algokit-generate-component contracts/artifacts/{{ camel_case_name }}.arc32.json contracts/artifacts/components",
     "build": "npm run compile-contract && npm run generate-client",
     "test": "npm run build && jest",
@@ -17,8 +17,8 @@
     "algosdk": "^2.4.0"
   },
   "devDependencies": {
-    "@algorandfoundation/algokit-client-generator": "^2.2.1",
-    "@algorandfoundation/tealscript": "^0.68.0",
+    "@algorandfoundation/algokit-client-generator": "^2.3.1",
+    "@algorandfoundation/tealscript": "^0.70.0",
     "@jest/globals": "^29.5.0",
     "@joe-p/algokit-generate-component": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
