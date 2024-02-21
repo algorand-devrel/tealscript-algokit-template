@@ -4,6 +4,7 @@ import { algorandFixture } from '@algorandfoundation/algokit-utils/testing';
 import { {{ camel_case_name }}Client } from '../contracts/clients/{{ camel_case_name }}Client';
 
 const fixture = algorandFixture();
+algokit.Config.configure({ populateAppCallResources: true });
 
 let appClient: {{ camel_case_name }}Client;
 
