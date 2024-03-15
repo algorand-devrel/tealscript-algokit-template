@@ -28,8 +28,8 @@ class {{ camel_case_name }} extends Contract {
   /**
    * A method that takes two numbers and does either addition or subtraction
    *
-   * @param a The first number
-   * @param b The second number
+   * @param a The first uint64
+   * @param b The second uint64
    * @param operation The operation to perform. Can be either 'sum' or 'difference'
    *
    * @returns The result of the operation
@@ -44,5 +44,16 @@ class {{ camel_case_name }} extends Contract {
     } else throw Error('Invalid operation');
 
     return result;
+  }
+
+  /**
+   * A demonstration method used in the AlgoKit fullstack template.
+   * Greets the user by name.
+   *
+   * @param name The name of the user to greet.
+   * @returns A greeting message to the user.
+   */
+  hello(name: string): string {
+    return 'Hello, ' + name;
   }
 }
