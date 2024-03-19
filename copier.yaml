@@ -1,46 +1,22 @@
 _subdirectory: template_content
 
-# questions
-# project_name should never get prompted, AlgoKit should always pass it by convention
 project_name:
     type: str
     help: Name for this project.
     placeholder: "algorand-app"
+
+contract_name:
+    type: str
+    help: Name of the default smart contract app.
+    placeholder: "HelloWorld"
+    default: "HelloWorld"
+    validator: >-
+        {% if not (contract_name | regex_search('^[A-Z][a-zA-Z]*(?:[A-Z][a-zA-Z]*)*$')) %}
+        contract_name must be formatted in PascalCase.
+        {% endif %}
 
 use_workspace:
     type: bool
     when: false # never prompted to user explicitly, instead expect cli to auto fill (supported cli versions > v1.13.x)
     help: Automatically filled by AlgoKit CLI (>1.13.x) - passes the --workspace/--no-workspace flag's value, can be used to reason whether this template is currently being instantiated as part of a workspace or not.
     default: no
-
-# The following should never get prompted; algokit should always pass these values through by convention
-
-algod_token:
-    type: str
-    help: Default Algod Token
-    default: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-
-algod_server:
-    type: str
-    help: Default Algod server
-    default: "http://localhost"
-
-algod_port:
-    type: int
-    help: Default Algod port
-    default: 4001
-
-indexer_token:
-    type: str
-    help: Default Indexer token
-    default: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-
-indexer_server:
-    type: str
-    help: Default Indexer server
-    default: "http://localhost"
-
-indexer_port:
-    type: int
-    help: Default Indexer port
-    default: 8980
