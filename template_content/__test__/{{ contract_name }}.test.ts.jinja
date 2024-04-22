@@ -1,7 +1,7 @@
 import { describe, test, expect, beforeAll, beforeEach } from '@jest/globals';
 import { algorandFixture } from '@algorandfoundation/algokit-utils/testing';
-import { {{ contract_name }}Client } from '../contracts/clients/{{ contract_name }}Client';
 import * as algokit from '@algorandfoundation/algokit-utils';
+import { {{ contract_name }}Client } from '../contracts/clients/{{ contract_name }}Client';
 
 const fixture = algorandFixture();
 algokit.Config.configure({ populateAppCallResources: true });
@@ -13,7 +13,8 @@ describe('{{ contract_name }}', () => {
 
   beforeAll(async () => {
     await fixture.beforeEach();
-    const { algod, testAccount } = fixture.context;
+    const { testAccount } = fixture.context;
+    const { algorand } = fixture;
 
     appClient = new {{ contract_name }}Client(
       {
@@ -21,7 +22,7 @@ describe('{{ contract_name }}', () => {
         resolveBy: 'id',
         id: 0,
       },
-      algod
+      algorand.client.algod
     );
 
     await appClient.create.createApplication({});
